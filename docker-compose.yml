@@ -1,0 +1,15 @@
+nginx:
+  restart: always
+  image: artburkart/nginx-map2app
+  environment:
+    - APP_PROXY=http://hello-world:80
+  ports:
+    - "9090:80"
+  links:
+    - hello-world:hello-world
+
+hello-world:
+  restart: always
+  image: tutum/hello-world
+  expose:
+    - "80"
